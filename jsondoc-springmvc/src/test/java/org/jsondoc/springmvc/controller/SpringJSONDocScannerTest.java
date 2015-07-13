@@ -99,14 +99,14 @@ public class SpringJSONDocScannerTest {
 				@ApiQueryParam(name = "age") @RequestParam Integer age) {
 			return "ok";
 		}
-
 	}
 
 	@Test
 	public void testCorsEnabled() throws Exception {
 		this.mockMvcCorsEnabled.perform(get("/api").accept(MediaType.APPLICATION_JSON)).andExpect(status().is(404))
-				.andExpect(header().string("Access-Control-Allow-Origin", "*"))
-				.andExpect(header().string("Access-Control-Allow-Headers", "*"));
+				.andExpect(header().string("Access-Control-Allow-Origin", "*")).andExpect(
+				header().string("Access-Control-Allow-Headers",
+						"Origin, X-Requested-With, Content-Type, Accept, JWT-simulate"));
 	}
 
 	@Test(expected = AssertionError.class)

@@ -81,9 +81,11 @@ public class JSONDoc {
 		this.displayMethodAs = displayMethodAs;
 	}
 
-    @Override
+	@Override
 	public String toString() {
-		return "JSONDoc [version=" + version + ", basePath=" + basePath + ", apis=" + apis + ", objects=" + objects + ", flows=" + flows + ", playgroundEnabled=" + playgroundEnabled + ", displayMethodAs=" + displayMethodAs + "]";
+		return "JSONDoc [version=" + version + ", basePath=" + basePath + ", apis=" + apis + ", objects=" + objects
+				+ ", flows=" + flows + ", playgroundEnabled=" + playgroundEnabled + ", displayMethodAs="
+				+ displayMethodAs + "]";
 	}
 
 }
