@@ -61,7 +61,7 @@ public class JSONDocController {
 	@RequestMapping(value = JSONDocController.JSONDOC_PDF_DEFAULT_PATH, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public
 	@ResponseBody
-	File getPdfDoc() {
-		return pdfExportView.getPdfFile();
+	File getPdfDoc(String filename) {
+		return pdfExportView.getPdfFile(filename);
 	}
 }

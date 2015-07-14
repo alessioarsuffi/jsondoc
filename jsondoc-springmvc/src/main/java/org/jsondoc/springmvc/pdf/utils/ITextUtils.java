@@ -1,6 +1,7 @@
 package org.jsondoc.springmvc.pdf.utils;
 
 import com.lowagie.text.Phrase;
+import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.PdfPCell;
 
 /**
@@ -8,31 +9,49 @@ import com.lowagie.text.pdf.PdfPCell;
  */
 public class ITextUtils {
 
-    public static PdfPCell getHeaderCell(String text) {
-        PdfPCell cell = new PdfPCell();
+	public static PdfPCell getHeaderCell(String text) {
+		PdfPCell cell = new PdfPCell();
 
-        cell.setBorderWidthBottom(3f);
-        cell.setBorderColorBottom(Colors.CELL_BORDER_COLOR);
-        cell.setPhrase(new Phrase(text));
+		cell.setBorder(Rectangle.NO_BORDER);
+		cell.setBorderWidthBottom(3f);
+		cell.setBorderColorBottom(Colors.CELL_BORDER_COLOR);
+		cell.setPaddingBottom(7f);
+		cell.setPhrase(new Phrase(text));
 
-        return cell;
-    }
+		return cell;
+	}
 
-    public static PdfPCell getCell(String text, int pos) {
+	public static PdfPCell getCell(String text, int pos) {
 
-        PdfPCell cell = new PdfPCell();
+		PdfPCell cell = new PdfPCell();
 
-        cell.setBorderWidthRight(1f);
-        cell.setBorderColorBottom(Colors.CELL_BORDER_COLOR);
+		cell.setBorder(Rectangle.NO_BORDER);
+		cell.setBorderWidthRight(1f);
+		cell.setBorderColorRight(Colors.CELL_BORDER_COLOR);
+		cell.setPaddingBottom(7f);
 
-        if (pos != 0) {
-            if (pos % 2 == 0) cell.setBackgroundColor(Colors.EVEN_CELL_COLOR);
-            else cell.setBackgroundColor(Colors.ODD_CELL_COLOR);
-        }
+		if (pos != 0) {
+			if (pos % 2 == 0)
+				cell.setBackgroundColor(Colors.EVEN_CELL_COLOR);
+			else
+				cell.setBackgroundColor(Colors.ODD_CELL_COLOR);
+		}
 
-        cell.setPhrase(new Phrase(text));
+		cell.setPhrase(new Phrase(text));
 
-        return cell;
-    }
+		return cell;
+	}
+
+	public static PdfPCell setOddEvenStyle(PdfPCell cell, int pos) {
+
+		if (pos % 2 == 0)
+			cell.setBackgroundColor(Colors.EVEN_CELL_COLOR);
+		else
+			cell.setBackgroundColor(Colors.ODD_CELL_COLOR);
+
+		cell.setPaddingBottom(7f);
+
+		return cell;
+	}
 
 }
